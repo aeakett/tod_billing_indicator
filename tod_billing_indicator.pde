@@ -119,20 +119,28 @@ bool isBoxingDay() {
    }
 }
 
-bool isRememberanceDay() {
-   return false;
-}
-
 bool isThanksgiving() {
-   return false;
+   if (month()==10 && getNthOccOfDayInMonth(2,2,10) == day()) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 bool isLabourDay() {
-   return false;
+   if (month()==9 && getNthOccOfDayInMonth(1,2,9) == day()) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 bool isCivicHoliday() {
-   return false;
+   if (month()==8 && getNthOccOfDayInMonth(1,2,8) == day()) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 bool isCanadaDay() {
@@ -151,12 +159,12 @@ bool isGoodFriday() {
    return false;
 }
 
-bool isEasterMonday() {
-   return false;
-}
-
 bool isFamilyDay() {
-   return false;
+   if (month()==2 && getNthOccOfDayInMonth(3,2,2) == day()) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 bool isNewYearsDay() {
@@ -167,15 +175,15 @@ bool isNewYearsDay() {
    }
 }
 
-int getNthOccOfDayInMonth(int nthOccurrence, int theDayOfWeek, int theMonth, int theYear) {
+int getNthOccOfDayInMonth(int nthOccurrence, int theDayOfWeek, int theMonth) {
    int theDayInMonth=0;
-   if(theDayOfWeek < day(createDateTime(theYear,theMonth,1,0,0,0))){
-      theDayInMonth = 1 + nthOccurrence*7  + (theDayOfWeek - day(createDateTime(theYear,theMonth,1,0,0,0))) % 7;
+   if(theDayOfWeek < day(createDateTime(year(),theMonth,1,0,0,0))){
+      theDayInMonth = 1 + nthOccurrence*7  + (theDayOfWeek - day(createDateTime(year(),theMonth,1,0,0,0))) % 7;
    } else {
-      theDayInMonth = 1 + (nthOccurrence-1)*7  + (theDayOfWeek - dayOfWeek(createDateTime(theYear,theMonth,1,0,0,0))) % 7;
+      theDayInMonth = 1 + (nthOccurrence-1)*7  + (theDayOfWeek - dayOfWeek(createDateTime(year(),theMonth,1,0,0,0))) % 7;
    }
    //If the result is greater than days in month or less than 1, return -1
-   if(theDayInMonth > daysInMonth(theYear, theMonth) || theDayInMonth < 1){
+   if(theDayInMonth > daysInMonth(year(), theMonth) || theDayInMonth < 1){
       return -1;
    } else {
       return theDayInMonth;
