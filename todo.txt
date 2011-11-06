@@ -1,3 +1,2 @@
 -all isX() date helpers need to account for the holiday being on the weekend and roll the cheapness out to the monday (or tuesday in the case of Boxing Day)
--make schematic diagram
 -add code and hardware for countdown timer until next price change
